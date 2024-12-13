@@ -1,0 +1,17 @@
+---
+import Layout from '../layouts/Layout.astro'
+import Classroom from '../components/Classroom_old.tsx'
+---
+
+<Layout title="Welcome to Astro.">
+  <main class="container mx-auto px-4">
+    <div class="grid grid-cols-2 gap-4">
+      <div>
+        <Classroom client:load />
+      </div>
+      <div>
+        <Classroom client:load />
+      </div>
+    </div>
+  </main>
+</Layout>
