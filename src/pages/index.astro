@@ -1,10 +1,47 @@
 ---
 import Layout from '@/layouts/Layout.astro'
-import Calendar from '@/components/Calendar.astro'
+
+/* import { getSession } from 'auth-astro/server'
+import { SignIn, SignOut } from 'auth-astro/components'
+
+const session = await getSession(Astro.request)
+console.log(session?.user) */
+
+console.log(Astro.cookies)
 ---
 
 <Layout title="Welcome to Astro.">
-  <main class="container mx-auto px-4">
-    <Calendar/>
-  </main>
+  <!-- {session ? <p>Welcome {session.user?.name}</p> : <p>Not logged in</p>}
+
+  <SignIn
+    class="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow"
+    provider="google">Sign in</SignIn
+  >
+  <SignOut
+    class="bg-black hover:bg-gray-100 text-white hover:text-black font-semibold py-2 px-4 border border-gray-400 rounded shadow"
+    >Sign out</SignOut
+  > -->
+  <div class="flex flex-col justify-center items-center mt-32">
+    <div class="w-full max-w-md">
+      <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+        <div class="flex items-center justify-between">
+          <a
+            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            href="/signup"
+          >
+            Registrarme
+          </a>
+        </div>
+        <div class="flex items-center justify-between mt-4">
+          <a
+            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            href="/login"
+          >
+            Identificarme
+          </a>
+        </div>
+      </div>
+      <p class="text-center text-gray-500 text-xs">&copy;2024 A&H. All rights reserved.</p>
+    </div>
+  </div>
 </Layout>

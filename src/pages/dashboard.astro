@@ -1,0 +1,50 @@
+---
+import Layout from '@/layouts/Layout.astro'
+import { db, User } from 'astro:db'
+
+//Usuarios de la bbdd
+const users = await db.select().from(User)
+users.forEach((e) => {
+  console.log(e)
+})
+
+//Usuario logeado de la cookie
+const user = Astro.locals.user
+console.log(user)
+if (!user) {
+  return Astro.redirect('/login')
+}
+
+//Si tenemos usuario logeado, comprobamos si es miembro o admin
+const is_admin = users.find((e) => {
+  if (e.id === user.id) {
+    return e.is_admin
+  }
+})
+---
+
+<Layout title="Dashboard">
+  <h1>Protected Dashboard</h1>
+  <p>Welcome {user.email}</p>
+  <form method="post" action="/api/logout">
+    <button>Sign out</button>
+  </form>
+
+  <div>
+    {
+      !is_admin ? (
+        users.map(({ id, name, email, google_id }) => (
+          <div class="box-border p-4 border-4 mt-4 mx-8">
+            <p>Id: {id}</p>
+            <p>Nombre: {name}</p>
+            <p>Email: {email}</p>
+            <p>Google ID: {google_id}</p>
+            <p>ADMIN: {is_admin ? 'SI' : 'NO'}</p>
+          </div>
+        ))
+      ) : (
+        <p>Only admins can see the users</p>
+      )
+    }
+  </div>
+</Layout>
