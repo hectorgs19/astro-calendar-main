@@ -2,7 +2,7 @@
 import '@/styles/index.scss'
 import clases from '@/data/event.json'
 
-const hours = Array.from({ length: 15 }, (_, i) => i + 7).filter(
+const hours = Array.from({ length: 16 }, (_, i) => i + 7).filter(
   (hour) => hour !== 14 && hour !== 15
 )
 const days = ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes']
@@ -11,7 +11,7 @@ const slots = clases
 const getLevelColor = (level: any) => {
   switch (level) {
     case 'Principiante':
-      return 'bg-blue-500'
+      return 'bg-sky-200'
     case 'Intermedio':
       return 'bg-yellow-500'
     case 'Avanzado':
@@ -21,26 +21,23 @@ const getLevelColor = (level: any) => {
   }
 }
 ---
-
-<div class="mx-5 h-screen">
-  <div class="grid grid-cols-1 lg:grid-cols-5 h-full">
+  <div class="m-5">
+    <div class="grid grid-cols-1 lg:grid-cols-5 mx-8 lg:border lg:border-slate-500">
     {
       days.map((day) => (
-        
-        <div class="flex flex-col h-full mx-0.5">
-          <div class="flex-1 content-center text-center font-semibold border-b-2 border-slate-700">{day}</div>
+        <div class="flex flex-col h-full">
+          <div class="flex-1 content-center text-center font-semibold border-b-2 border-x-2 border-slate-700">{day} {Math.floor(Math.random() * 10)+1} </div>
           {hours.map((hour) => (
             <div class="relative border-b border-gray-200">
-                <a href={`/clases/${day}-${hour}`} class={`absolute text-white shadow-inner top-0 right-0 rounded-md h-10 sm:h-12 2xl:h-14 w-5/6 mt-1 mr-1 ${getLevelColor('Principiante')}`}>
-                    <span class="text-sm font-bold"></span>
-                    <span class="text-sm font-bold">0 / 8 G8</span>
+                <a href={`/clases/${day}-${hour}`} class={`absolute text-white shadow-inner rounded-md h-20 w-11/12 my-1.5 mx-3 ${getLevelColor('Principiante')}`}>
+                  {hour}:00
                 </a>
             </div>
-            <div class="h-12 lg:flex-1">{hour}:00</div>
-            <div class="flex-1 border-t border-gray-200 h-12 lg:flex-1"></div>
+            <div class="h-12"></div>
+            <div class="border-t border-gray-200 h-12"></div>
           ))}
         </div>
       ))
     }
+    </div>
   </div>
-</div>
