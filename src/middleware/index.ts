@@ -1,14 +1,12 @@
-import { lucia } from '@/lib/auth'
-import { verifyRequestOrigin } from 'lucia'
-import { defineMiddleware } from 'astro:middleware'
+import { lucia } from '@/lib/auth/auth'
+import { sequence } from 'astro:middleware'
 
-export const onRequest = defineMiddleware(async (context, next) => {
+async function auth(context, next) {
   const sessionId = context.cookies.get(lucia.sessionCookieName)?.value ?? null
-  console.log('Session ID: ' + sessionId)
   if (!sessionId) {
     context.locals.user = null
     context.locals.session = null
-    return next()
+    return await next()
   }
 
   const { session, user } = await lucia.validateSession(sessionId)
@@ -24,5 +22,20 @@ export const onRequest = defineMiddleware(async (context, next) => {
   context.locals.session = session
   context.locals.user = user
 
-  return next()
-})
+  return await next()
+}
+
+async function permissions(context, next) {
+  /*const user = context.locals.user
+  if (
+    !user &&
+    context.url.pathname !== '/' &&
+    context.url.pathname !== '/login' &&
+    context.url.pathname !== '/signup'
+  ) {
+    return await context.redirect('/login')
+  }*/
+  return await next()
+}
+
+export const onRequest = sequence(auth, permissions)

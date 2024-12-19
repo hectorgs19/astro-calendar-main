@@ -1,4 +1,4 @@
-import { lucia } from '@/lib/auth'
+import { lucia } from '@/lib/auth/auth'
 import { generateId } from 'lucia'
 import { db, User } from 'astro:db'
 

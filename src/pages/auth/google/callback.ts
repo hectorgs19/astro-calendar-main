@@ -1,4 +1,4 @@
-import { google, lucia } from '@/lib/auth'
+import { google, lucia } from '@/lib/auth/auth'
 import { decodeIdToken, generateCodeVerifier, OAuth2RequestError } from 'arctic'
 import { generateId } from 'lucia'
 

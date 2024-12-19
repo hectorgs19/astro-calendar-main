@@ -14,7 +14,8 @@ const User_Slot = defineTable({
   columns: {
     id: column.text({ primaryKey: true, optional: false, unique: true }),
     user_id: column.text({ references: () => User.columns.id, optional: false }),
-    slot_id: column.text({ references: () => Slot.columns.id, optional: false })
+    slot_id: column.text({ references: () => Slot.columns.id, optional: false }),
+    default: column.boolean({ optional: false, default: false })
   }
 })
 

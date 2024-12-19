@@ -11,7 +11,7 @@
     "jsx": "preserve",
 
     // strictness options
-    "strict": true,
+    "strict": false,
     "strictNullChecks": true,
     "noUncheckedIndexedAccess": true,
 

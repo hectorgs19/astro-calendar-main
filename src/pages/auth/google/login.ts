@@ -1,5 +1,5 @@
 import { generateState, generateCodeVerifier } from 'arctic'
-import { google } from '@/lib/auth'
+import { google } from '@/lib/auth/auth'
 
 import type { APIContext } from 'astro'
 
@@ -12,14 +12,14 @@ export async function GET(context: APIContext): Promise<Response> {
   context.cookies.set('google_oauth_state', state, {
     path: '/',
     secure: import.meta.env.PROD,
-    maxAge: 60 * 10,
+    maxAge: 60,
     sameSite: 'lax'
   })
 
   context.cookies.set('google_oauth_verifier', codeVerifier, {
     path: '/',
     secure: import.meta.env.PROD,
-    maxAge: 60 * 10,
+    maxAge: 60,
     sameSite: 'lax'
   })
 

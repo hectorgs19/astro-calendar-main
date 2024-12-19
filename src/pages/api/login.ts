@@ -1,4 +1,4 @@
-import { lucia } from '@/lib/auth'
+import { lucia } from '@/lib/auth/auth'
 import { db, eq, User } from 'astro:db'
 
 import type { APIContext } from 'Astro'
