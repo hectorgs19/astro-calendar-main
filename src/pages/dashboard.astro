@@ -1,8 +1,9 @@
 ---
 import Layout from '@/layouts/Layout.astro'
-import WeekCalendar from '@/components/WeekCalendar.astro'
 
 import { db, User, Slot } from 'astro:db'
+import Header from '@/components/Header'
+import WeeklyCalendar from '@/components/WeeklyCalendar'
 
 //Usuario logeado de la cookie
 const user = Astro.locals.user
@@ -28,5 +29,12 @@ const is_admin = users.find((e) => {
 ---
 
 <Layout title="Dashboard">
-  <WeekCalendar />
+  <div class="flex flex-col items-center justify-center">
+    <div class="my-5">
+      <Header client:load />
+    </div>
+    <div class="w-11/12 mb-10">
+      <WeeklyCalendar client:load />
+    </div>
+  </div>
 </Layout>

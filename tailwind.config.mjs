@@ -1,4 +1,3 @@
-import colors from 'tailwindcss/colors'
 import defaultTheme from "tailwindcss/defaultTheme"
 
 /** @type {import('tailwindcss').Config} */
@@ -7,11 +6,7 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["Montserrat", ...defaultTheme.fontFamily.sans]
-      },
-      colors: {
-        primary: colors.indigo,
-        secondary: colors.yellow
+        sans: ["InterVariable", ...defaultTheme.fontFamily.sans]
       }
     }
   },
