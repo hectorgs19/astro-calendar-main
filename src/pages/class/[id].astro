@@ -1,0 +1,26 @@
+---
+import events from '../../data/events.json'
+const { id } = Astro.params
+
+const eventDetails = events.find((event) => event.id === parseInt(id, 10));
+
+if (!eventDetails) {
+  throw new Error(`Evento con ID ${id} no encontrado.`)
+}
+---
+
+<html>
+  <head>
+    <title>Detalles del Evento</title>
+  </head>
+  <body>
+    <h1>Detalles del Evento</h1>
+    <p><strong>ID:</strong> {eventDetails.id}</p>
+    <p><strong>Fila:</strong> {eventDetails.row}</p>
+    <p><strong>Columna:</strong> {eventDetails.column}</p>
+    <p><strong>Nivel:</strong> {eventDetails.color}</p>
+
+
+    <a href="/">Volver al calendario</a>
+  </body>
+</html>
