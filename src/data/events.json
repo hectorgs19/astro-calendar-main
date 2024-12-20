@@ -60,18 +60,6 @@
     "color": "red"
   },
   {
-    "id": 11,
-    "row": "1",
-    "column": "2",
-    "color": "red"
-  },
-  {
-    "id": 12,
-    "row": "2",
-    "column": "2",
-    "color": "green"
-  },
-  {
     "id": 13,
     "row": "3",
     "column": "2",

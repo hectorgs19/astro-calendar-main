@@ -13,7 +13,8 @@ export const lucia = new Lucia(adapter, {
   getUserAttributes: (attributes) => {
     return {
       email: attributes.email,
-      google_id: attributes.google_id
+      google_id: attributes.google_id,
+      is_admin: attributes.is_admin
     }
   }
 })
@@ -23,7 +24,7 @@ import { Google } from 'arctic'
 export const google = new Google(
   import.meta.env.GOOGLE_CLIENT_ID,
   import.meta.env.GOOGLE_CLIENT_SECRET,
-  'http://localhost:3000/auth/google/callback'
+  import.meta.env.GOOGLE_CLIENT_URL
 )
 
 declare module 'lucia' {
@@ -36,4 +37,5 @@ declare module 'lucia' {
 interface DatabaseUserAttributes {
   email: string
   google_id: string
+  is_admin: boolean
 }

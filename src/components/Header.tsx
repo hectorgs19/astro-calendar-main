@@ -12,7 +12,7 @@ const solutions = [
   {
     name: 'Configurador de clases',
     description: 'Configura las clases semanales disponibles para tus clientes',
-    href: '#',
+    href: '/slots/configurator',
     icon: ChartPieIcon
   },
   {
