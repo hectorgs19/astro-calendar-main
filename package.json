@@ -3,8 +3,8 @@
   "type": "module",
   "version": "1.0.0",
   "scripts": {
-    "dev": "astro dev --remote",
-    "build": "astro build --remote",
+    "dev": "astro dev",
+    "build": "astro build",
     "db": "astro db push --remote",
     "preview": "astro preview",
     "start": "node ./dist/server/entry.mjs",
