@@ -26,15 +26,15 @@ async function auth(context, next) {
 }
 
 async function permissions(context, next) {
-  /*const user = context.locals.user
+  const user = context.locals.user
   if (
     !user &&
     context.url.pathname !== '/' &&
-    context.url.pathname !== '/login' &&
-    context.url.pathname !== '/signup'
+    context.url.pathname !== '/signup' &&
+    !context.url.pathname.startsWith('/auth')
   ) {
-    return await context.redirect('/login')
-  }*/
+    return await context.redirect('/')
+  }
   return await next()
 }
 

@@ -10,17 +10,19 @@ export async function GET(context: APIContext): Promise<Response> {
   const url = google.createAuthorizationURL(state, codeVerifier, scopes)
 
   context.cookies.set('google_oauth_state', state, {
-    path: '/',
+    httpOnly: true,
+    sameSite: 'lax',
     secure: import.meta.env.PROD,
-    maxAge: 60,
-    sameSite: 'lax'
+    maxAge: 60 * 10,
+    path: '/'
   })
 
   context.cookies.set('google_oauth_verifier', codeVerifier, {
-    path: '/',
+    httpOnly: true,
+    sameSite: 'lax',
     secure: import.meta.env.PROD,
-    maxAge: 60,
-    sameSite: 'lax'
+    maxAge: 60 * 10,
+    path: '/'
   })
 
   return context.redirect(url.toString())

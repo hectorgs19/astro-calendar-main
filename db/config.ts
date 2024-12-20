@@ -37,5 +37,5 @@ const Session = defineTable({
 
 // https://astro.build/db/config
 export default defineDb({
-  tables: { User, Session, Slot, User_Slot }
+  tables: { User, Slot, User_Slot, Session }
 })
